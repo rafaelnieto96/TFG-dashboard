@@ -90,9 +90,13 @@
     <service id="App\Controller\HomepageController" class="App\Controller\HomepageController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Service\EventService"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.GNc8e5B.App\Controller\HomepageController"/>
       </call>
+    </service>
+    <service id="App\Service\EventService" class="App\Service\EventService" autowire="true" autoconfigure="true">
+      <argument>%env(resolve:API_URL)%</argument>
     </service>
     <service id="controller_resolver" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver">
       <tag name="monolog.logger" channel="request"/>
