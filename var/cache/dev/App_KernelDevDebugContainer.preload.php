@@ -152,3 +152,12 @@ $classes[] = 'Symfony\Component\HttpKernel\UriSigner';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\ValidateRequestListener';
 
 $preloaded = Preloader::preload($classes);
+require_once __DIR__.'/twig/09/090498989014f62edae017b7bbdbcacd525aeed827fdc73124fdd24fcd65691a.php';
+require_once __DIR__.'/twig/23/23d70b2bed6e75a52c865d5b17673273c81c9bb65123ff6fddc09d6d9bf7ce55.php';
+require_once __DIR__.'/twig/b2/b2bf3240c0be2f8d47edc0d4a4b9fd156845c2da218b545a7a6554a749e2380b.php';
+
+$classes = [];
+$classes[] = 'Symfony\\Component\\Routing\\Generator\\CompiledUrlGenerator';
+$classes[] = 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableCompiledUrlMatcher';
+$classes[] = 'Symfony\\Component\\Routing\\Annotation\\Route';
+$preloaded = Preloader::preload($classes, $preloaded);

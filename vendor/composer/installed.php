@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '5a4016fcc19ceab3abfa2f87a25dede1364fdc94',
+        'reference' => 'ab93e32f5293ba5bec39146c746a156a5c5b85d1',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '5a4016fcc19ceab3abfa2f87a25dede1364fdc94',
+            'reference' => 'ab93e32f5293ba5bec39146c746a156a5c5b85d1',
             'dev_requirement' => false,
         ),
         'doctrine/annotations' => array(
@@ -56,12 +56,12 @@
             'dev_requirement' => false,
         ),
         'nikic/php-parser' => array(
-            'pretty_version' => 'v4.15.3',
-            'version' => '4.15.3.0',
+            'pretty_version' => 'v4.15.4',
+            'version' => '4.15.4.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
-            'reference' => '570e980a201d8ed0236b0a62ddf2c9cbb2034039',
+            'reference' => '6bb5176bc4af8bcb7d926f88718db9b96a2d4290',
             'dev_requirement' => true,
         ),
         'php-http/async-client-implementation' => array(

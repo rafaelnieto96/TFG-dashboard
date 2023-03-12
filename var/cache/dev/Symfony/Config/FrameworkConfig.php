@@ -474,19 +474,9 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
         return $this->request;
     }
 
-    /**
-     * @return \Symfony\Config\Framework\AssetsConfig|$this
-     */
-    public function assets($value = [])
+    public function assets(array $value = []): \Symfony\Config\Framework\AssetsConfig
     {
-        if (!\is_array($value)) {
-            $this->_usedProperties['assets'] = true;
-            $this->assets = $value;
-
-            return $this;
-        }
-
-        if (!$this->assets instanceof \Symfony\Config\Framework\AssetsConfig) {
+        if (null === $this->assets) {
             $this->_usedProperties['assets'] = true;
             $this->assets = new \Symfony\Config\Framework\AssetsConfig($value);
         } elseif (0 < \func_num_args()) {
@@ -1013,7 +1003,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
 
         if (array_key_exists('assets', $value)) {
             $this->_usedProperties['assets'] = true;
-            $this->assets = \is_array($value['assets']) ? new \Symfony\Config\Framework\AssetsConfig($value['assets']) : $value['assets'];
+            $this->assets = new \Symfony\Config\Framework\AssetsConfig($value['assets']);
             unset($value['assets']);
         }
 
@@ -1209,7 +1199,7 @@ class FrameworkConfig implements \Symfony\Component\Config\Builder\ConfigBuilder
             $output['request'] = $this->request instanceof \Symfony\Config\Framework\RequestConfig ? $this->request->toArray() : $this->request;
         }
         if (isset($this->_usedProperties['assets'])) {
-            $output['assets'] = $this->assets instanceof \Symfony\Config\Framework\AssetsConfig ? $this->assets->toArray() : $this->assets;
+            $output['assets'] = $this->assets->toArray();
         }
         if (isset($this->_usedProperties['translator'])) {
             $output['translator'] = $this->translator instanceof \Symfony\Config\Framework\TranslatorConfig ? $this->translator->toArray() : $this->translator;

@@ -96,7 +96,7 @@ return [[
 ], [
 
 0 => [],
-1 => 1677610124,
+1 => 1678645379,
 2 => static function () {
     return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
         $o = [
