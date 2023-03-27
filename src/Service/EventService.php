@@ -18,13 +18,25 @@ class EventService
         ]);
     }
 
-    public function getEvents()
+    public function getEventsList()
     {
         try {
             $response = $this->httpClient->request('GET', $this->apiUrl . '/events');
             $data = $response->toArray();
 
             return $data['hydra:member'];
+        } catch (\Throwable $th) {
+            //If server is down, do nothing;
+        }
+    }
+
+    public function getOneEvent($id)
+    {
+        try {
+            $response = $this->httpClient->request('GET', $this->apiUrl . '/events/' . $id);
+            $data = $response->toArray();
+
+            return $data;
         } catch (\Throwable $th) {
             //If server is down, do nothing;
         }
@@ -37,8 +49,8 @@ class EventService
                 'json' => $data,
             ]);
             $data = $response->toArray();
-// dd($data);
-            return $data['hydra:member'];
+
+            return $data;
         } catch (\Throwable $th) {
             //If server is down, do nothing;
         }

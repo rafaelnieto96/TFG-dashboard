@@ -66,7 +66,7 @@
 						</svg>
 					</button>
 					<a href="{{ path('homepage_new') }}" class="btn btn-primary font-weight-bolder">
-						<button class="app-content-headerButton">Add Product
+						<button class="app-content-headerButton">Create Event
 						</button>
 					</a>
 				</div>
@@ -155,10 +155,18 @@
 						<div class="product-cell status-cell">
 							<span class="status active">Active</span>
 						</div>
-												
 						<div class="product-cell">
-							Actions here
-						</div>
+
+							<details class="dropdown">
+								<summary role="button">
+									<a class="button"></a>
+								</summary>
+								<ul>
+									<li><a href="{{ path('homepage_edit', {'id': item.id}) }}">Edit</a></li>
+									<li><a href="{{ path('homepage_delete', {'id': item.id}) }}">Delete</a></li>
+								</ul>
+							</details></div>
+
 					</div>
 					{% endfor %}
 
