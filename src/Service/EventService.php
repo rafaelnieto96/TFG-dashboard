@@ -29,4 +29,18 @@ class EventService
             //If server is down, do nothing;
         }
     }
+
+    public function createEvent($data)
+    {
+        try {
+            $response = $this->httpClient->request('POST', $this->apiUrl . '/events', [
+                'json' => $data,
+            ]);
+            $data = $response->toArray();
+// dd($data);
+            return $data['hydra:member'];
+        } catch (\Throwable $th) {
+            //If server is down, do nothing;
+        }
+    }
 }
