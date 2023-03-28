@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use Symfony\Component\HttpClient\HttpClient;
+use Exception;
 
 class EventService
 {
@@ -25,8 +26,8 @@ class EventService
             $data = $response->toArray();
 
             return $data['hydra:member'];
-        } catch (\Throwable $th) {
-            //If server is down, do nothing;
+        } catch (\Exception $exception) {
+            throw new Exception($exception->getMessage());
         }
     }
 
@@ -37,8 +38,8 @@ class EventService
             $data = $response->toArray();
 
             return $data;
-        } catch (\Throwable $th) {
-            //If server is down, do nothing;
+        } catch (\Exception $exception) {
+            throw new Exception($exception->getMessage());
         }
     }
 
@@ -51,8 +52,20 @@ class EventService
             $data = $response->toArray();
 
             return $data;
-        } catch (\Throwable $th) {
-            //If server is down, do nothing;
+        } catch (\Exception $exception) {
+            throw new Exception($exception->getMessage());
+        }
+    }
+
+    public function delete($id)
+    {
+        try {
+            $response = $this->httpClient->request('DELETE', $this->apiUrl . '/events/' . $id);
+            $data = $response->toArray();
+
+            return $data;
+        } catch (\Exception $exception) {
+            throw new Exception($exception->getMessage());
         }
     }
 }

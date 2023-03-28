@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Exception;
 
 class HomepageController extends AbstractController
 {
@@ -74,21 +75,13 @@ class HomepageController extends AbstractController
     /**
      * @Route("/{id}/delete", name="homepage_delete")
      */
-    public function delete(Request $request): Response
+    public function delete(Request $request, $id): Response
     {
-        $form = $this->createForm(EventType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $formData = $form->getData();
-            $event = $this->eventService->createEvent($formData);
-
-            return $this->redirectToRoute('homepage');
+        try {
+            $this->eventService->delete($id);
+        } catch (\Exception $exception) {
+            throw new Exception($exception->getMessage());
         }
-
-        return $this->render('homepage/new.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        return $this->redirectToRoute('homepage');
     }
-
 }
