@@ -27,7 +27,7 @@ class EventService
 
             return $data['hydra:member'];
         } catch (\Exception $exception) {
-            throw new Exception($exception->getMessage());
+            // throw new Exception($exception->getMessage());
         }
     }
 
@@ -39,7 +39,7 @@ class EventService
 
             return $data;
         } catch (\Exception $exception) {
-            throw new Exception($exception->getMessage());
+            // throw new Exception($exception->getMessage());
         }
     }
 
@@ -53,7 +53,7 @@ class EventService
 
             return $data;
         } catch (\Exception $exception) {
-            throw new Exception($exception->getMessage());
+            // throw new Exception($exception->getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ class EventService
 
             return $data;
         } catch (\Exception $exception) {
-            throw new Exception($exception->getMessage());
+            // throw new Exception($exception->getMessage());
         }
     }
 }
