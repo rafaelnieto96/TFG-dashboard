@@ -162,6 +162,10 @@ body {
 	background-color: var(--color-white);
 }
 
+.topbar .top{
+	height: inherit;
+}
+
 .main-content {
 	margin-top: var(--topbar-height);
 	margin-left: var(--sidebar-width);
@@ -327,6 +331,7 @@ aside .sidebar a:hover span {
 	display: flex;
 	justify-content: end;
 	gap: 2rem;
+	align-items: center;
 }
 
 .top button {
@@ -361,8 +366,14 @@ aside .sidebar a:hover span {
 
 .top .profile {
 	display: flex;
-	gap: 2rem;
+	margin-right: 10px;
+	gap: 0.8rem;
 	text-align: right;
+	align-items: center;
+}
+
+.profile .info p {
+	margin-bottom: 0;
 }
 
 /* =============== END TOP RIGHT =============== */
