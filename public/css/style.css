@@ -534,6 +534,14 @@ footer {
     bottom: 0;
 	margin-left: 200px;
     width: 100%;
+	background-color: var(--color-white);
+}
+
+footer .container {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	margin: 0;
 }
 
 /* =============== END FOOTER =============== */
