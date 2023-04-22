@@ -542,7 +542,7 @@ footer {
 	left: 0;
 	bottom: 0;
 	margin-left: 200px;
-	width: 100%;
+	width: calc(100% - 200px);
 	background-color: var(--color-white);
 }
 
@@ -550,7 +550,6 @@ footer .container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 0;
 }
 
 /* =============== END FOOTER =============== */
