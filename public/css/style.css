@@ -54,7 +54,7 @@ h1 {
 }
 
 h2 {
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	color: var(--color-dark);
 }
 
@@ -176,6 +176,7 @@ body {
 
 /* =============== LIST TABLE =============== */
 .main-content .main-table {
+	padding-top: 35px;
 	margin: 30px;
 }
 
