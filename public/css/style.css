@@ -254,11 +254,17 @@ aside .top {
 aside .logo {
 	display: flex;
 	gap: 0.8rem;
+	align-items: center;
+}
+
+aside .logo h2 {
+	margin-bottom: 0;
 }
 
 aside .logo img {
 	width: 2rem;
 	height: 2rem;
+	margin-left: 0.52rem;
 }
 
 aside .close {
