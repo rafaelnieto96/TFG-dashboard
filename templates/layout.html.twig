@@ -1,35 +1,21 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-	<div
-		class='main-container'>
+
+	<div class='main-container'>
+
 		<!-- Start Aside Menu -->
 		{% include 'aside.html.twig' %}
 		<!-- End Aside Menu -->
-		<div
-			class="topbar">
-			<!-- Start Top -->
-			<div class="top">
-				<div class="theme-toggler">
-					<span class="material-icons-sharp active">light_mode</span>
-					<span class="material-icons-sharp">dark_mode</span>
-				</div>
-				<div class="profile">
-					<div class="info">
-						<p>Hey,
-							<b>Rafael</b>
-						</p>
-						{# <small class="text-muted">Admin</small> #}
-					</div>
-					<div class="profile-photo">
-						<img src="images/user_default.png">
-					</div>
-				</div>
-			</div>
-			<!-- End Top -->
-		</div>
+
+		<!-- Start Top -->
+		{% include 'topbar.html.twig' %}
+		<!-- End Top -->
+
 		<div class="main-content">
 			{% block bodyContent %}{% endblock %}
 		</div>
+
 	</div>
+	
 {% endblock %}
