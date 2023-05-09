@@ -25,7 +25,7 @@ class HomepageController extends AbstractController
     {
         $events = $this->eventService->getEventsList();
 
-        return $this->render('homepage/index.html', [
+        return $this->render('homepage/index.html.twig', [
             'events' => $events,
         ]);
     }
