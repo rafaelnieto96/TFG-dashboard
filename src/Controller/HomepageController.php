@@ -55,19 +55,19 @@ class HomepageController extends AbstractController
      */
     public function edit(Request $request, $id): Response
     {
-        $event = $this->eventService->getOneEvent($id);
+        $item = $this->eventService->getOneEvent($id);
 
-        $form = $this->createForm(EventType::class, $event);
+        $form = $this->createForm(EventType::class, $item);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
-            $event = $this->eventService->createEvent($formData);
+            $event = $this->eventService->updateEvent($id, $formData);
 
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('homepage/new.html.twig', [
+        return $this->render('homepage/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }

@@ -57,6 +57,20 @@ class EventService
         }
     }
 
+    public function updateEvent($id, $data)
+    {
+        try {
+            $response = $this->httpClient->request('PUT', $this->apiUrl . '/events/' . $id, [
+                'json' => $data,
+            ]);
+            $data = $response->toArray();
+    
+            return $data;
+        } catch (\Exception $exception) {
+            throw new Exception($exception->getMessage());
+        }
+    }
+
     public function delete($id)
     {
         try {
