@@ -13,8 +13,7 @@
 			<div class="row justify-content-center mb-3">
 				<div class="col-md-4">
 					<div class="input-group mb-3">
-
-						<input type="text" class="form-control input-text" placeholder="Search products...." aria-label="Recipient's username" aria-describedby="basic-addon2">
+						<input type="text" class="form-control input-text" id="search-input" placeholder="Search by name or description..." aria-label="Recipient's username" aria-describedby="basic-addon2">
 						<div class="input-group-append">
 							<button class="btn btn-md btn-outline-warning" type="button">
 								<i class="fa fa-search"></i>
@@ -61,4 +60,25 @@
 		{# <a href="#">Show all</a> #}
 		<!-- End List Table -->
 	</div>
+
+	<script>
+		const searchInput = document.querySelector('#search-input');
+
+		searchInput.addEventListener('input', () => {
+		const searchTerm = searchInput.value.trim().toLowerCase();
+		const rows = document.querySelectorAll('tbody tr');
+
+		rows.forEach((row) => {
+			const name = row.querySelector('td:first-child').textContent.trim().toLowerCase();
+			const description = row.querySelector('td:nth-child(2)').textContent.trim().toLowerCase();
+
+			if (name.includes(searchTerm) || description.includes(searchTerm)) {
+			row.style.display = '';
+			} else {
+			row.style.display = 'none';
+			}
+		});
+		});
+	</script>
+
 {% endblock %}
