@@ -6,13 +6,14 @@
 		</div>
 		<div class="profile">
 			<div class="info">
-			<a href="/{{ app.user ? 'logout' : 'login' }}">
-			{{ app.user ? 'Logout' : 'Login' }}
-			</a>
-
+				<a href="{{ path('app_logout') }}">
+					Logout
+				</a>
+				{% if app.user %}
 				<p>Hey,
-					<b>Rafael</b>
+					<b>{{ app.user.username }}</b>
 				</p>
+				{% endif %}
 				{# <small class="text-muted">Admin</small> #}
 			</div>
 			<div class="profile-photo">
