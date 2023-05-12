@@ -6,6 +6,10 @@
 		</div>
 		<div class="profile">
 			<div class="info">
+			<a href="/{{ app.user ? 'logout' : 'login' }}">
+			{{ app.user ? 'Logout' : 'Login' }}
+			</a>
+
 				<p>Hey,
 					<b>Rafael</b>
 				</p>
