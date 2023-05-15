@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Exception;
 
+/**
+ * @Route("", name="homepage_")
+*/
 class HomepageController extends AbstractController
 {
     private $eventService;
@@ -19,7 +22,7 @@ class HomepageController extends AbstractController
     }
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="index")
      */
     public function index(): Response
     {
@@ -28,60 +31,5 @@ class HomepageController extends AbstractController
         return $this->render('homepage/index.html.twig', [
             'events' => $events,
         ]);
-    }
-
-    /**
-     * @Route("/new", name="homepage_new")
-     */
-    public function new(Request $request): Response
-    {
-        $form = $this->createForm(EventType::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $formData = $form->getData();
-            $event = $this->eventService->createEvent($formData);
-
-            return $this->redirectToRoute('homepage');
-        }
-
-        return $this->render('homepage/new.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="homepage_edit")
-     */
-    public function edit(Request $request, $id): Response
-    {
-        $item = $this->eventService->getOneEvent($id);
-
-        $form = $this->createForm(EventType::class, $item);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $formData = $form->getData();
-            $event = $this->eventService->updateEvent($id, $formData);
-
-            return $this->redirectToRoute('homepage');
-        }
-
-        return $this->render('homepage/edit.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/delete", name="homepage_delete")
-     */
-    public function delete(Request $request, $id): Response
-    {
-        try {
-            $this->eventService->delete($id);
-        } catch (\Exception $exception) {
-            throw new Exception($exception->getMessage());
-        }
-        return $this->redirectToRoute('homepage');
     }
 }
