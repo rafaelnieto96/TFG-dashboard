@@ -26,59 +26,89 @@
 				</div>
 			</div>
 			<!-- End Search Box -->
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Description</th>
-						<th>Points</th>
-						<th>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for item in events %}
+			{% if events|length == 0 %}
+				<p>Empty list</p>
+			{% else %}
+				<table>
+					<thead>
 						<tr>
-							<td>{{ item.name }}</td>
-							<td>{{ item.description }}</td>
-							<td>{{ item.points }}</td>
-							<td class="primary">
-								<details class="dropdown">
-									<summary role="button">
-										<i class="fa fa-2x fa-cog"></i>
-									</summary>
-									<ul>
-										<li><a href="{{ path('homepage_edit', {'id': item.id}) }}">Edit</a></li>
-										<li><a href="{{ path('homepage_delete', {'id': item.id}) }}">Delete</a></li>
-									</ul>
-								</details>
-							</td>
+							<th style="width: 20%;">Name</th>
+							<th style="width: 40%;">Description</th>
+							<th style="width: 20%;">Points</th>
+							<th style="width: 20%;">Actions</th>
 						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{% for item in events %}
+							<tr>
+								<td>{{ item.name }}</td>
+								<td>{{ item.description }}</td>
+								<td>{{ item.points }}</td>
+								<td class="primary">
+									<details class="dropdown">
+										<summary role="button">
+											<i class="fa fa-2x fa-cog"></i>
+										</summary>
+										<ul>
+											<li><ahref="{{ path('homepage_edit', {'id': item.id}) }}">Edit</ahref=></li>
+											<li><ahref="{{ path('homepage_delete', {'id': item.id}) }}">Delete</ahref=></li>
+										</ul>
+									</details>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% endif %}
 		</div>
 		{# <a href="#">Show all</a> #}
 		<!-- End List Table -->
 	</div>
-
+	<p class="text-center" style="display: none; font-weight: bold;" id="no-results" colspan="4">No results found</p>
 	<script>
 		const searchInput = document.querySelector('#search-input');
+	const table = document.querySelector('table');
+	const tbody = document.querySelector('tbody');
+	const emptyListMessage = document.querySelector('.empty-list');
 
-		searchInput.addEventListener('input', () => {
-		const searchTerm = searchInput.value.trim().toLowerCase();
-		const rows = document.querySelectorAll('tbody tr');
+	let message = document.querySelector('.no-results');
 
-		rows.forEach((row) => {
-			const name = row.querySelector('td:first-child').textContent.trim().toLowerCase();
-			const description = row.querySelector('td:nth-child(2)').textContent.trim().toLowerCase();
+	if (! message) {
+	message = document.createElement('p');
+	message.classList.add('no-results', 'text-center', 'font-weight-bold');
+	message.textContent = 'No results found';
+	}
 
-			if (name.includes(searchTerm) || description.includes(searchTerm)) {
-			row.style.display = '';
-			} else {
-			row.style.display = 'none';
-			}
-		});
-		});
+	searchInput.addEventListener('input', () => {
+	const searchTerm = searchInput.value.trim().toLowerCase();
+	const rows = document.querySelectorAll('tbody tr');
+
+	let count = 0;
+	rows.forEach((row) => {
+	const name = row.querySelector('td:first-child').textContent.trim().toLowerCase();
+	const description = row.querySelector('td:nth-child(2)').textContent.trim().toLowerCase();
+
+	if (name.includes(searchTerm) || description.includes(searchTerm)) {
+	row.style.display = '';
+	count++;
+	} else {
+	row.style.display = 'none';
+	}
+	});
+
+	if (count === 0) {
+	tbody.style.display = 'none';
+	table.insertAdjacentElement('afterend', message);
+	emptyListMessage.style.display = 'none';
+	} else {
+	tbody.style.display = '';
+	message.remove();
+	if (emptyListMessage && rows.length === 0) {
+	emptyListMessage.style.display = '';
+	}
+	}
+	});
 	</script>
+
 
 {% endblock %}
