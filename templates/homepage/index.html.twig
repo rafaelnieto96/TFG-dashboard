@@ -39,6 +39,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						{# <p class="text-center" style="display: none; font-weight: bold;" id="no-results" colspan="4">No results found</p> #}
 						{% for item in events %}
 							<tr>
 								<td>{{ item.name }}</td>
@@ -64,50 +65,50 @@
 		{# <a href="#">Show all</a> #}
 		<!-- End List Table -->
 	</div>
-	<p class="text-center" style="display: none; font-weight: bold;" id="no-results" colspan="4">No results found</p>
+
 	<script>
 		const searchInput = document.querySelector('#search-input');
-	const table = document.querySelector('table');
-	const tbody = document.querySelector('tbody');
-	const emptyListMessage = document.querySelector('.empty-list');
+		const table = document.querySelector('table');
+		const tbody = document.querySelector('tbody');
+		const emptyListMessage = document.querySelector('.empty-list');
 
-	let message = document.querySelector('.no-results');
+		let message = document.querySelector('.no-results');
 
-	if (! message) {
-	message = document.createElement('p');
-	message.classList.add('no-results', 'text-center', 'font-weight-bold');
-	message.textContent = 'No results found';
-	}
+		if (! message) {
+		message = document.createElement('p');
+		message.classList.add('no-results', 'text-center', 'font-weight-bold', 'mt-4', 'mb-4');
+		message.textContent = 'No results found';
+		}
 
-	searchInput.addEventListener('input', () => {
-	const searchTerm = searchInput.value.trim().toLowerCase();
-	const rows = document.querySelectorAll('tbody tr');
+		searchInput.addEventListener('input', () => {
+		const searchTerm = searchInput.value.trim().toLowerCase();
+		const rows = document.querySelectorAll('tbody tr');
 
-	let count = 0;
-	rows.forEach((row) => {
-	const name = row.querySelector('td:first-child').textContent.trim().toLowerCase();
-	const description = row.querySelector('td:nth-child(2)').textContent.trim().toLowerCase();
+		let count = 0;
+		rows.forEach((row) => {
+		const name = row.querySelector('td:first-child').textContent.trim().toLowerCase();
+		const description = row.querySelector('td:nth-child(2)').textContent.trim().toLowerCase();
 
-	if (name.includes(searchTerm) || description.includes(searchTerm)) {
-	row.style.display = '';
-	count++;
-	} else {
-	row.style.display = 'none';
-	}
-	});
+		if (name.includes(searchTerm) || description.includes(searchTerm)) {
+		row.style.display = '';
+		count++;
+		} else {
+		row.style.display = 'none';
+		}
+		});
 
-	if (count === 0) {
-	tbody.style.display = 'none';
-	table.insertAdjacentElement('afterend', message);
-	emptyListMessage.style.display = 'none';
-	} else {
-	tbody.style.display = '';
-	message.remove();
-	if (emptyListMessage && rows.length === 0) {
-	emptyListMessage.style.display = '';
-	}
-	}
-	});
+		if (count === 0) {
+		tbody.style.display = 'none';
+		table.insertAdjacentElement('afterend', message);
+		emptyListMessage.style.display = 'none';
+		} else {
+		tbody.style.display = '';
+		message.remove();
+		if (emptyListMessage && rows.length === 0) {
+		emptyListMessage.style.display = '';
+		}
+		}
+		});
 	</script>
 
 
