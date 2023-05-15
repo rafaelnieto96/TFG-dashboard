@@ -22,7 +22,7 @@
 					</div>
 				</div>
 				<div class="col-md-8">
-					<a href="{{ path('homepage_new') }}" class="btn btn-outline-warning float-right mr-4">Create Event</a>
+					<a href="{{ path('events_new') }}" class="btn btn-outline-warning float-right mr-4">Create Event</a>
 				</div>
 			</div>
 			<!-- End Search Box -->
@@ -51,8 +51,8 @@
 											<i class="fa fa-2x fa-cog"></i>
 										</summary>
 										<ul>
-											<li><ahref="{{ path('homepage_edit', {'id': item.id}) }}">Edit</ahref=></li>
-											<li><ahref="{{ path('homepage_delete', {'id': item.id}) }}">Delete</ahref=></li>
+											<li><ahref="{{ path('events_edit', {'id': item.id}) }}">Edit</ahref=></li>
+											<li><ahref="{{ path('events_delete', {'id': item.id}) }}">Delete</ahref=></li>
 										</ul>
 									</details>
 								</td>

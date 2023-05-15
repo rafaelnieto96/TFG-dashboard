@@ -10,7 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Exception;
 
-class HomepageController extends AbstractController
+/**
+ * @Route("", name="events_")
+*/
+class EventController extends AbstractController
 {
     private $eventService;
 
@@ -19,7 +22,7 @@ class HomepageController extends AbstractController
     }
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="index")
      */
     public function index(): Response
     {
@@ -31,7 +34,7 @@ class HomepageController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="homepage_new")
+     * @Route("/new", name="new")
      */
     public function new(Request $request): Response
     {
@@ -51,7 +54,7 @@ class HomepageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="homepage_edit")
+     * @Route("/{id}/edit", name="edit")
      */
     public function edit(Request $request, $id): Response
     {
@@ -73,7 +76,7 @@ class HomepageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete", name="homepage_delete")
+     * @Route("/{id}/delete", name="delete")
      */
     public function delete(Request $request, $id): Response
     {
