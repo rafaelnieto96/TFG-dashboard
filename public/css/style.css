@@ -293,6 +293,7 @@ aside .sidebar a {
 	position: relative;
 	height: 3.7rem;
 	transition: all 0.3s ease;
+	text-decoration: none;
 }
 
 aside .sidebar a span {
