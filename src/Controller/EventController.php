@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Exception;
 
 /**
- * @Route("", name="events_")
+ * @Route("events", name="events_")
 */
 class EventController extends AbstractController
 {
@@ -28,7 +28,7 @@ class EventController extends AbstractController
     {
         $events = $this->eventService->getEventsList();
 
-        return $this->render('homepage/index.html.twig', [
+        return $this->render('events/index.html.twig', [
             'events' => $events,
         ]);
     }
@@ -45,10 +45,10 @@ class EventController extends AbstractController
             $formData = $form->getData();
             $event = $this->eventService->createEvent($formData);
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('events_index');
         }
 
-        return $this->render('homepage/new.html.twig', [
+        return $this->render('events/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -70,7 +70,7 @@ class EventController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('homepage/edit.html.twig', [
+        return $this->render('events/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -85,6 +85,6 @@ class EventController extends AbstractController
         } catch (\Exception $exception) {
             throw new Exception($exception->getMessage());
         }
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('events_index');
     }
 }
