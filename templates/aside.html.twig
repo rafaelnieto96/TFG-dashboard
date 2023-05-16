@@ -11,11 +11,11 @@
 			</div>
 		</div>
 		<div class="sidebar">
-			<a href="{{ path('homepage_index') }}">
+ 			<a href="{{ path('homepage_index') }}" {% if app.request.attributes.get('_route') == 'homepage_index' %}class="active"{% endif %}>
 				<span class="material-icons-sharp">grid_view</span>
 				<h3>Dashboard</h3>
 			</a>
-			<a href="{{ path('events_index') }}" class="active">
+			<a href="{{ path('events_index') }}"  {% if app.request.attributes.get('_route') == 'events_index' %}class="active"{% endif %}>
 				<span class="material-icons-sharp">grid_view</span>
 				<h3>Events</h3>
 			</a>
