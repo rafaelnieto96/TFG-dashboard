@@ -51,8 +51,12 @@
 											<i class="fa fa-2x fa-cog"></i>
 										</summary>
 										<ul>
-											<li><ahref="{{ path('events_edit', {'id': item.id}) }}">Edit</ahref=></li>
-											<li><ahref="{{ path('events_delete', {'id': item.id}) }}">Delete</ahref=></li>
+											<li>
+												<a href="{{ path('events_edit', {'id': item.id}) }}">Edit</a>
+											</li>
+											<li>
+												<a href="{{ path('events_delete', {'id': item.id}) }}">Delete</a>
+											</li>
 										</ul>
 									</details>
 								</td>

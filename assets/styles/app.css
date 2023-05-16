@@ -560,3 +560,19 @@ footer .container {
 }
 
 /* =============== END FOOTER =============== */
+
+/* =============== HOMEPAGE =============== */
+
+.btn-index {
+	padding: 15px 40px;
+	font-size: 24px;
+	color: white;
+	background-color: #f8c146;
+	border-color: transparent;
+}
+.btn-index:hover {
+	background-color: orange;
+	border-color: transparent;
+}
+
+/* =============== END HOMEPAGE =============== */
