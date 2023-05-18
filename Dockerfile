@@ -23,4 +23,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 EXPOSE 8000
 
 # Start the application
-CMD ["php", "bin/console", "server:run", "0.0.0.0:8000"]
+CMD ["php", "bin/console", "server:run", "0.0.0.0:8000", "--env=dev"]
