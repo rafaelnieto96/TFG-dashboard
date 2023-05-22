@@ -29,7 +29,7 @@ class BadgeController extends AbstractController
         $badges = $this->badgeService->getBadgesList();
 
         return $this->render('badges/index.html.twig', [
-            'badges' => $badges,
+            'items' => $badges,
         ]);
     }
 

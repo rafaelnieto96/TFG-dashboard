@@ -29,7 +29,7 @@ class AchievementController extends AbstractController
         $achievements = $this->achievementService->getAchievementsList();
 
         return $this->render('achievements/index.html.twig', [
-            'achievements' => $achievements,
+            'items' => $achievements,
         ]);
     }
 

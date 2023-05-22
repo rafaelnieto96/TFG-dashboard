@@ -29,7 +29,7 @@ class RankController extends AbstractController
         $ranks = $this->rankService->getRanksList();
 
         return $this->render('ranks/index.html.twig', [
-            'ranks' => $ranks,
+            'items' => $ranks,
         ]);
     }
 
