@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Service\EventService;
-use App\Form\EventType;
+use App\Service\RankService;
+use App\Form\RankType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,14 +11,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Exception;
 
 /**
- * @Route("events", name="events_")
+ * @Route("ranks", name="ranks_")
 */
-class EventController extends AbstractController
+class RankController extends AbstractController
 {
-    private $eventService;
+    private $rankService;
 
-    public function __construct(EventService $eventService) {
-        $this->eventService = $eventService;
+    public function __construct(RankService $rankService) {
+        $this->rankService = $rankService;
     }
 
     /**
@@ -26,10 +26,10 @@ class EventController extends AbstractController
      */
     public function index(): Response
     {
-        $events = $this->eventService->getEventsList();
+        $ranks = $this->rankService->getRanksList();
 
-        return $this->render('events/index.html.twig', [
-            'items' => $events,
+        return $this->render('ranks/index.html.twig', [
+            'items' => $ranks,
         ]);
     }
 
@@ -38,17 +38,17 @@ class EventController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $form = $this->createForm(EventType::class);
+        $form = $this->createForm(RankType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
-            $event = $this->eventService->createEvent($formData);
+            $rank = $this->rankService->createRank($formData);
 
-            return $this->redirectToRoute('events_index');
+            return $this->redirectToRoute('ranks_index');
         }
 
-        return $this->render('events/new.html.twig', [
+        return $this->render('ranks/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -58,19 +58,19 @@ class EventController extends AbstractController
      */
     public function edit(Request $request, $id): Response
     {
-        $item = $this->eventService->getOneEvent($id);
+        $item = $this->rankService->getOneRank($id);
 
-        $form = $this->createForm(EventType::class, $item);
+        $form = $this->createForm(RanktType::class, $item);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
-            $event = $this->eventService->updateEvent($id, $formData);
+            $rank = $this->rankService->updateRank($id, $formData);
 
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('events/edit.html.twig', [
+        return $this->render('ranks/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -81,10 +81,10 @@ class EventController extends AbstractController
     public function delete(Request $request, $id): Response
     {
         try {
-            $this->eventService->delete($id);
+            $this->rankService->delete($id);
         } catch (\Exception $exception) {
             throw new Exception($exception->getMessage());
         }
-        return $this->redirectToRoute('events_index');
+        return $this->redirectToRoute('ranks_index');
     }
 }

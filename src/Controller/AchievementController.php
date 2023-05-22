@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Service\EventService;
-use App\Form\EventType;
+use App\Service\AchievementService;
+use App\Form\AchievementType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,14 +11,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Exception;
 
 /**
- * @Route("events", name="events_")
+ * @Route("achievements", name="achievements_")
 */
-class EventController extends AbstractController
+class AchievementController extends AbstractController
 {
-    private $eventService;
+    private $achievementService;
 
-    public function __construct(EventService $eventService) {
-        $this->eventService = $eventService;
+    public function __construct(AchievementService $achievementService) {
+        $this->achievementService = $achievementService;
     }
 
     /**
@@ -26,10 +26,10 @@ class EventController extends AbstractController
      */
     public function index(): Response
     {
-        $events = $this->eventService->getEventsList();
+        $achievements = $this->achievementService->getAchievementsList();
 
-        return $this->render('events/index.html.twig', [
-            'items' => $events,
+        return $this->render('achievements/index.html.twig', [
+            'items' => $achievements,
         ]);
     }
 
@@ -38,17 +38,17 @@ class EventController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $form = $this->createForm(EventType::class);
+        $form = $this->createForm(AchievementType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
-            $event = $this->eventService->createEvent($formData);
+            $achievement = $this->achievementService->createAchievement($formData);
 
-            return $this->redirectToRoute('events_index');
+            return $this->redirectToRoute('achievements_index');
         }
 
-        return $this->render('events/new.html.twig', [
+        return $this->render('achievements/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -58,19 +58,19 @@ class EventController extends AbstractController
      */
     public function edit(Request $request, $id): Response
     {
-        $item = $this->eventService->getOneEvent($id);
+        $item = $this->achievementService->getOneAchievement($id);
 
-        $form = $this->createForm(EventType::class, $item);
+        $form = $this->createForm(AchievementType::class, $item);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
-            $event = $this->eventService->updateEvent($id, $formData);
+            $achievement = $this->achievementService->updateAchievement($id, $formData);
 
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('events/edit.html.twig', [
+        return $this->render('achievements/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -81,10 +81,10 @@ class EventController extends AbstractController
     public function delete(Request $request, $id): Response
     {
         try {
-            $this->eventService->delete($id);
+            $this->achievementService->delete($id);
         } catch (\Exception $exception) {
             throw new Exception($exception->getMessage());
         }
-        return $this->redirectToRoute('events_index');
+        return $this->redirectToRoute('achievements_index');
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Service\EventService;
-use App\Form\EventType;
+use App\Service\BadgeService;
+use App\Form\BadgeType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,14 +11,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Exception;
 
 /**
- * @Route("events", name="events_")
+ * @Route("badges", name="badges_")
 */
-class EventController extends AbstractController
+class BadgeController extends AbstractController
 {
-    private $eventService;
+    private $badgeService;
 
-    public function __construct(EventService $eventService) {
-        $this->eventService = $eventService;
+    public function __construct(BadgeService $badgeService) {
+        $this->badgeService = $badgeService;
     }
 
     /**
@@ -26,10 +26,10 @@ class EventController extends AbstractController
      */
     public function index(): Response
     {
-        $events = $this->eventService->getEventsList();
+        $badges = $this->badgeService->getBadgesList();
 
-        return $this->render('events/index.html.twig', [
-            'items' => $events,
+        return $this->render('badges/index.html.twig', [
+            'items' => $badges,
         ]);
     }
 
@@ -38,17 +38,17 @@ class EventController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $form = $this->createForm(EventType::class);
+        $form = $this->createForm(BadgeType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
-            $event = $this->eventService->createEvent($formData);
+            $badge = $this->badgeService->createBadge($formData);
 
-            return $this->redirectToRoute('events_index');
+            return $this->redirectToRoute('badges_index');
         }
 
-        return $this->render('events/new.html.twig', [
+        return $this->render('badges/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -58,19 +58,19 @@ class EventController extends AbstractController
      */
     public function edit(Request $request, $id): Response
     {
-        $item = $this->eventService->getOneEvent($id);
+        $item = $this->badgeService->getOneBadge($id);
 
-        $form = $this->createForm(EventType::class, $item);
+        $form = $this->createForm(BadgeType::class, $item);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
-            $event = $this->eventService->updateEvent($id, $formData);
+            $badge = $this->badgeService->updateBadge($id, $formData);
 
             return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('events/edit.html.twig', [
+        return $this->render('badges/edit.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -81,10 +81,10 @@ class EventController extends AbstractController
     public function delete(Request $request, $id): Response
     {
         try {
-            $this->eventService->delete($id);
+            $this->badgeService->delete($id);
         } catch (\Exception $exception) {
             throw new Exception($exception->getMessage());
         }
-        return $this->redirectToRoute('events_index');
+        return $this->redirectToRoute('badges_index');
     }
 }
