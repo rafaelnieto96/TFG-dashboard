@@ -19,17 +19,17 @@
 				<span class="material-icons-sharp">emoji_events</span>
 				<h3>Events</h3>
 			</a>
-			<a href="#">
-				<span class="material-icons-sharp">grid_view</span>
-				<h3>Events</h3>
+			<a href="{{ path('ranks_index') }}"  {% if app.request.attributes.get('_route') == 'ranks_index' %}class="active"{% endif %}>
+				<span class="material-icons-sharp">emoji_events</span>
+				<h3>Ranks</h3>
 			</a>
-			<a href="#">
-				<span class="material-icons-sharp">grid_view</span>
-				<h3>Events</h3>
+			<a href="{{ path('achievements_index') }}"  {% if app.request.attributes.get('_route') == 'achievements_index' %}class="active"{% endif %}>
+				<span class="material-icons-sharp">emoji_events</span>
+				<h3>Achievements</h3>
 			</a>
-			<a href="#">
-				<span class="material-icons-sharp">grid_view</span>
-				<h3>Events</h3>
+			<a href="{{ path('badges_index') }}"  {% if app.request.attributes.get('_route') == 'badges_index' %}class="active"{% endif %}>
+				<span class="material-icons-sharp">emoji_events</span>
+				<h3>Badges</h3>
 			</a>
 			<a href="{{ path('app_logout') }}">
 				<span class="material-icons-sharp">grid_view</span>
