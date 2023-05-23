@@ -67,7 +67,7 @@ class EventController extends AbstractController
             $formData = $form->getData();
             $event = $this->eventService->updateEvent($id, $formData);
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('events_index');
         }
 
         return $this->render('events/edit.html.twig', [

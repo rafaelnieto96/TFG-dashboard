@@ -22,7 +22,7 @@
 					</div>
 				</div>
 				<div class="col-md-8">
-					<a href="{{ path('ranks_new') }}" class="btn btn-outline-warning float-right mr-4">Create Rank</a>
+					<a href="{{ path('user_ranks_new') }}" class="btn btn-outline-warning float-right mr-4">Create Rank</a>
 				</div>
 			</div>
 			<!-- End Search Box -->
@@ -52,10 +52,10 @@
 										</summary>
 										<ul>
 											<li>
-												<a href="{{ path('ranks_edit', {'id': item.id}) }}">Edit</a>
+												<a href="{{ path('user_ranks_edit', {'id': item.id}) }}">Edit</a>
 											</li>
 											<li>
-												<a href="{{ path('ranks_delete', {'id': item.id}) }}">Delete</a>
+												<a href="{{ path('user_ranks_delete', {'id': item.id}) }}">Delete</a>
 											</li>
 										</ul>
 									</details>

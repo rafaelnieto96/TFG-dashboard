@@ -67,7 +67,7 @@ class AchievementController extends AbstractController
             $formData = $form->getData();
             $achievement = $this->achievementService->updateAchievement($id, $formData);
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('achievements_index');
         }
 
         return $this->render('achievements/edit.html.twig', [

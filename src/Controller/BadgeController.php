@@ -67,7 +67,7 @@ class BadgeController extends AbstractController
             $formData = $form->getData();
             $badge = $this->badgeService->updateBadge($id, $formData);
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('badges_index');
         }
 
         return $this->render('badges/edit.html.twig', [

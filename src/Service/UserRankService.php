@@ -5,7 +5,7 @@ namespace App\Service;
 use Symfony\Component\HttpClient\HttpClient;
 use Exception;
 
-class RankService
+class UserRankService
 {
     private $apiUrl;
     private $httpClient;
@@ -22,7 +22,7 @@ class RankService
     public function getRanksList()
     {
         try {
-            $response = $this->httpClient->request('GET', $this->apiUrl . '/ranks');
+            $response = $this->httpClient->request('GET', $this->apiUrl . '/user_ranks');
             $data = $response->toArray();
 
             return $data['hydra:member'];
@@ -34,7 +34,7 @@ class RankService
     public function getOneRank($id)
     {
         try {
-            $response = $this->httpClient->request('GET', $this->apiUrl . '/ranks/' . $id);
+            $response = $this->httpClient->request('GET', $this->apiUrl . '/user_ranks/' . $id);
             $data = $response->toArray();
 
             return $data;
@@ -46,7 +46,7 @@ class RankService
     public function createRank($data)
     {
         try {
-            $response = $this->httpClient->request('POST', $this->apiUrl . '/ranks', [
+            $response = $this->httpClient->request('POST', $this->apiUrl . '/user_ranks', [
                 'json' => $data,
             ]);
             $data = $response->toArray();
@@ -60,7 +60,7 @@ class RankService
     public function updateRank($id, $data)
     {
         try {
-            $response = $this->httpClient->request('PUT', $this->apiUrl . '/ranks/' . $id, [
+            $response = $this->httpClient->request('PUT', $this->apiUrl . '/user_ranks/' . $id, [
                 'json' => $data,
             ]);
             $data = $response->toArray();
@@ -74,7 +74,7 @@ class RankService
     public function delete($id)
     {
         try {
-            $response = $this->httpClient->request('DELETE', $this->apiUrl . '/ranks/' . $id);
+            $response = $this->httpClient->request('DELETE', $this->apiUrl . '/user_ranks/' . $id);
             $data = $response->toArray();
 
             return $data;

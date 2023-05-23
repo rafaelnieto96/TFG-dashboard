@@ -26,7 +26,7 @@ services:
         arguments:
             $apiUrl: '%env(resolve:API_URL)%'
 
-    App\Service\RankService:
+    App\Service\UserRankService:
         arguments:
             $apiUrl: '%env(resolve:API_URL)%'
 
