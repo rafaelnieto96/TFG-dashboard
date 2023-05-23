@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Service\RankService;
+use App\Service\UserRankService;
 use App\Form\RankType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,13 +11,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Exception;
 
 /**
- * @Route("ranks", name="ranks_")
+ * @Route("user-ranks", name="user_ranks_")
 */
-class RankController extends AbstractController
+class UserRankController extends AbstractController
 {
     private $rankService;
 
-    public function __construct(RankService $rankService) {
+    public function __construct(UserRankService $rankService) {
         $this->rankService = $rankService;
     }
 
@@ -45,7 +45,7 @@ class RankController extends AbstractController
             $formData = $form->getData();
             $rank = $this->rankService->createRank($formData);
 
-            return $this->redirectToRoute('ranks_index');
+            return $this->redirectToRoute('user_ranks_index');
         }
 
         return $this->render('ranks/new.html.twig', [
@@ -60,14 +60,14 @@ class RankController extends AbstractController
     {
         $item = $this->rankService->getOneRank($id);
 
-        $form = $this->createForm(RanktType::class, $item);
+        $form = $this->createForm(RankType::class, $item);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
             $rank = $this->rankService->updateRank($id, $formData);
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('user_ranks_index');
         }
 
         return $this->render('ranks/edit.html.twig', [
@@ -85,6 +85,6 @@ class RankController extends AbstractController
         } catch (\Exception $exception) {
             throw new Exception($exception->getMessage());
         }
-        return $this->redirectToRoute('ranks_index');
+        return $this->redirectToRoute('user_ranks_index');
     }
 }
