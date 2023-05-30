@@ -15,6 +15,7 @@
 	--color-dark-variant: #677483;
 	/* --color-background: #f6f6f9; */
 	--color-background: #f1f3f9;
+	--color-main-yellow: #f8c146;
 
 	--card-border-radius: 2rem;
 	--border-radius-1: 0.4rem;
@@ -29,10 +30,12 @@
 
 /* DARK THEME VARIABLES */
 .dark-theme-variables {
-	--color-white: #2f373d;
+	--color-background: #D6DBE2;
+	--color-main-yellow: #E2AC3E;
+	--color-white: #414C54;
 	--color-dark: #edeffd;
 	--color-dark-variant: #a3bdcc;
-	--color-light: #2f373d;
+	--color-light: #596B77; 
 	--box-shadow: 0 2rem 3rem var(--color-light)
 }
 
@@ -143,7 +146,6 @@ body {
 	--topbar-height: 60px;
 	--sidebar-width: 200px;
 	color: white;
-	background-color: #f1f3f9;
 }
 
 .sidebar {
@@ -151,7 +153,7 @@ body {
 	top: 0;
 	width: var(--sidebar-width);
 	height: 100vh;
-	background-color: #f8c146;
+	background-color: var(--color-main-yellow);
 }
 
 .topbar {
@@ -400,7 +402,7 @@ aside .sidebar a:hover span {
 }
 
 .fa-cog {
-	color: #f8c146;
+	color: var(--color-main-yellow);
 	margin-left: 15px;
 	cursor: pointer;
 
@@ -531,12 +533,12 @@ summary {
 
 .input-text:focus {
 	box-shadow: 0px 0px 0px;
-	border-color: #f8c146;
+	border-color: var(--color-main-yellow);
 	outline: 0px;
 }
 
 .form-control {
-	border: 1px solid #f8c146;
+	border: 1px solid var(--color-main-yellow);
 	font-size: 0.8rem;
 }
 
