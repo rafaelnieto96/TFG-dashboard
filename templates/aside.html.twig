@@ -35,13 +35,13 @@
 			</a>
 
 			<h3 class="aside-title">Bomberos</h3>
-			<a href="{{ path('badges_index') }}" {% if app.request.attributes.get('_route') == 'badges_index' %} class="active" {% endif %}>
+			<a href="{{ path('posts_index') }}" {% if app.request.attributes.get('_route') == 'posts_index' %} class="active" {% endif %}>
 				<span class="material-icons-sharp">fire_truck</span>
 				<h3>Noticias</h3>
 			</a>
 
 			<h3 class="aside-title">Policia</h3>
-			<a href="{{ path('badges_index') }}" {% if app.request.attributes.get('_route') == 'badges_index' %} class="active" {% endif %}>
+			<a href="{{ path('notifications_index') }}" {% if app.request.attributes.get('_route') == 'notifications_index' %} class="active" {% endif %}>
 				<span class="material-icons-sharp">local_police</span>
 				<h3>Avisos</h3>
 			</a>
