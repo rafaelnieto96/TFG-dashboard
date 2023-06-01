@@ -13,7 +13,7 @@
 			<div class="row justify-content-center mb-3">
 				<div class="col-md-4">
 					<div class="input-group mb-3">
-						<input type="text" class="form-control input-text" id="search-input" placeholder="Search by name or description..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+						<input type="text" class="form-control input-text" id="search-input" placeholder="Filtrar por nombre..." aria-label="Recipient's username" aria-describedby="basic-addon2">
 						<div class="input-group-append">
 							<button class="btn btn-md btn-outline-warning" type="button">
 								<i class="fa fa-search"></i>
@@ -27,7 +27,7 @@
 			</div>
 			<!-- End Search Box -->
 			{% if items|length == 0 %}
-				<p>Empty list</p>
+				<p>Lista vacia</p>
 			{% else %}
 				<table>
 					<thead>
