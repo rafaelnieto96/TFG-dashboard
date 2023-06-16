@@ -42,7 +42,6 @@ services:
         arguments:
             $apiUrl: '%env(resolve:BOMBEROS_API_URL)%'
 
-
     App\Service\NotificationService:
         arguments:
             $apiUrl: '%env(resolve:POLICIA_API_URL)%'

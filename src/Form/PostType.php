@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,13 +23,6 @@ class PostType extends AbstractType
             ->add('subtitle', TextareaType::class, [
                 'label' => 'Subtítulo',
                 'required' => false,
-                'attr' => [
-                    'class' => 'form-group'
-                ]
-            ])
-            ->add('image', FileType::class, [
-                'label' => 'Imagen',
-                'required' => true,
                 'attr' => [
                     'class' => 'form-group'
                 ]

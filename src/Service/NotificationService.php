@@ -46,7 +46,7 @@ class NotificationService
     public function createNotification($data)
     {
         try {
-            $response = $this->httpClient->request('notification', $this->apiUrl . '/notifications', [
+            $response = $this->httpClient->request('POST', $this->apiUrl . '/notifications', [
                 'json' => $data,
             ]);
             $data = $response->toArray();
