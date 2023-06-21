@@ -32,8 +32,10 @@
 				<table>
 					<thead>
 						<tr>
-							<th style="width: 20%;">Título</th>
-							<th style="width: 40%;">Contenido</th>
+							<th style="width: 15%;">Título</th>
+							<th style="width: 40%;">Descripción</th>
+							<th style="width: 15%;">Autor</th>
+							<th style="width: 10%;">Lugar</th>
 							<th style="width: 20%;">Acciones</th>
 						</tr>
 					</thead>
@@ -43,6 +45,8 @@
 							<tr>
 								<td>{{ item.title }}</td>
 								<td>{{ item.subtitle }}</td>
+								<td>{{ item.author }}</td>
+								<td>{{ item.place }}</td>
 								<td class="primary">
 									<details class="dropdown">
 										<summary role="button">

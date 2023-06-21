@@ -59,6 +59,14 @@
 							{{ form_label(form.subtitle, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
 							{{ form_widget(form.subtitle, {'attr': {'class': 'form-control'}}) }}
 						</div>
+						<div class="form-group">
+							{{ form_label(form.author, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+							{{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<div class="form-group">
+							{{ form_label(form.place, null, {'label_attr': {'class': 'font-weight-bold'}}) }}
+							{{ form_widget(form.place, {'attr': {'class': 'form-control'}}) }}
+						</div>
 						<button type="submit" class="btn btn-primary">Guardar</button>
 						{{ form_end(form) }}
 					</div>

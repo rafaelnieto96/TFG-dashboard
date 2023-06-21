@@ -21,7 +21,21 @@ class PostType extends AbstractType
                 ]
             ])
             ->add('subtitle', TextareaType::class, [
-                'label' => 'Subtítulo',
+                'label' => 'Descripción',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-group'
+                ]
+            ])
+            ->add('author', TextType::class, [
+                'label' => 'Autor',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-group'
+                ]
+            ])
+            ->add('place', TextType::class, [
+                'label' => 'Lugar',
                 'required' => false,
                 'attr' => [
                     'class' => 'form-group'
