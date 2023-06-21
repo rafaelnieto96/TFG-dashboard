@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* Root Variable */
+/* ROOT VARIABLES */
 :root {
 	--color-primary: #7380ec;
 	--color-danger: #ff7782;
@@ -13,7 +13,6 @@
 	--color-light: rgba(132, 139, 200, 0.18);
 	--color-primary-variant: #111e88;
 	--color-dark-variant: #677483;
-	/* --color-background: #f6f6f9; */
 	--color-background: #f1f3f9;
 	--color-main-yellow: #f8c146;
 
