@@ -576,6 +576,10 @@ footer .container {
 
 /* =============== HOMEPAGE =============== */
 
+.section-title{
+	margin-bottom: 20px;
+}
+
 .btn-index {
 	padding: 15px 40px;
 	font-size: 24px;
